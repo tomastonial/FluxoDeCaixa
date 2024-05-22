@@ -28,6 +28,10 @@ programa {
 
       caso 3:
       listaRelatorio()
+
+      caso contrario:
+      escreva("Obrigado por utilizar nosso fluxo de caixa!")
+      pare
     }
     }enquanto(opcoes_menu != 5)
   }
