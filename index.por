@@ -84,13 +84,6 @@ programa {
   }
 
 
-  funcao real listaSaldoAtual(){
-    real saldo = 0
-    para(inteiro i = 0; i < contador; i++){
-      saldo += valores[i]
-    }
-    retorne saldo
-  }
 
   funcao listaRelatorio(){
     para(inteiro i = 0; i < contador; i++){
