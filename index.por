@@ -11,7 +11,7 @@ programa {
     escreva("O que deseja fazer \n")
     escreva("1 - Adicionar Receita \n")
     escreva("2 - Adicionar Despesa \n")
-    escreva("3 - Ver relátorio \n")
+    escreva("3 - Ver relatorio \n")
     escreva("4 - Listar Saldo Atual \n")
     escreva("5 - Sair \n")
     leia(opcoes_menu)
@@ -25,6 +25,9 @@ programa {
       caso 2:
       requisitaDespesa()
       pare
+
+      caso 3:
+      listaRelatorio()
     }
     }enquanto(opcoes_menu != 5)
   }
@@ -83,5 +86,13 @@ programa {
       saldo += valores[i]
     }
     retorne saldo
+  }
+
+  funcao listaRelatorio(){
+    para(inteiro i = 0; i < contador; i++){
+      escreva("\n Descrição: ", descricoes[i], "\n")
+      escreva("Valor: ", valores[i], "\n")
+      escreva("Data: ", datasEhoras[i], "\n \n")
+    }
   }
 }
