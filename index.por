@@ -4,10 +4,9 @@ programa {
   cadeia datasEhoras[5]
   inteiro opcoes_menu
   inteiro contador = 0
-
   
   funcao inicio() {
-     faca{
+    faca{
     escreva("O que deseja fazer \n")
     escreva("1 - Adicionar Receita \n")
     escreva("2 - Adicionar Despesa \n")
@@ -19,15 +18,21 @@ programa {
    
     escolha(opcoes_menu){
       caso 1:
-      requisitaReceita()
-      pare
+        requisitaReceita()
+        pare
 
       caso 2:
-      requisitaDespesa()
-      pare
+        requisitaDespesa()
+        pare
 
       caso 3:
-      listaRelatorio()
+        listaRelatorio()
+        pare
+
+      caso 4:
+        real saldo = listaSaldoAtual()
+        escreva("Saldo Atual: ", saldo, "\n")
+        pare
 
       caso contrario:
       escreva("Obrigado por utilizar nosso fluxo de caixa!")
@@ -51,39 +56,42 @@ programa {
     adicionarReceita(descricao, valor, data)
   }
 
+  funcao requisitaDespesa() {
+    cadeia descricao
+    real valor
+    cadeia data
 
-  funcao adicionarReceita (cadeia descricao, real valor, cadeia data){
+    escreva("Digite a descri��o da Despesa: \n")
+    leia(descricao)
+    escreva("Digite o valor da Despesa: \n")
+    leia(valor)
+    escreva("Digite a data da Despesa: \n")
+    leia(data)
+    adicionarDespesa(descricao, valor, data)
+  }
+
+  funcao adicionarDespesa(cadeia descricao, real valor, cadeia data) {
+    descricoes[contador] = descricao
+    valores[contador] = -valor  
+    datasEhoras[contador] = data
+    contador = contador + 1
+  }
+
+  funcao real listaSaldoAtual() {
+    real saldo = 0
+    para(inteiro i = 0; i < contador; i++) {
+      saldo += valores[i]
+    }
+    retorne saldo
+  }
+
+  funcao adicionarReceita(cadeia descricao, real valor, cadeia data){
     descricoes[contador] = descricao
     valores[contador] = valor
     datasEhoras[contador] = data
     
     contador++
   }
-
-  funcao requisitaDespesa(){
-    cadeia descricao_despesa
-    real valor_despesa
-    cadeia data_despesa
-
-    escreva("Digite a descrição da Despesa: \n")
-    leia(descricao_despesa)
-    escreva("Digite o valor da Despesa: \n")
-    leia(valor_despesa)
-    escreva("Digite a data da Despesa: \n")
-    leia(data_despesa)
-
-    adicionarReceita(descricao_despesa, valor_despesa, data_despesa)
-  }
-
-  funcao adiconarDespesa(cadeia descricao_despesa, real valor_despesa, cadeia data_despesa){
-    descricoes[contador] = descricao_despesa
-    valores[contador] = valor_despesa * -1
-    datasEhoras[contador] = data_despesa
-
-    contador ++
-  }
-
-
 
   funcao listaRelatorio(){
     para(inteiro i = 0; i < contador; i++){
